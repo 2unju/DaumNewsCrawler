@@ -32,6 +32,6 @@ Options:
       --category        Categories to crawl, choices=["all", "politics", "economic", "culture", "digital", "society"], default="all"
 ```
 
-##Results
+## Results
 ![image](https://user-images.githubusercontent.com/77797199/171593097-56dce7ac-5469-465d-92a8-de743d913a9f.png)
 수집된 뉴스는 txt 확장자로 저장됩니다.
