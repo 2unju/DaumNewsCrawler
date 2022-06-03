@@ -4,7 +4,7 @@ import requests
 import pandas as pd
 from bs4 import BeautifulSoup
 
-from utils import get_header
+from utils import get_header, sleep_page
 from cleaner import clean_text
 
 EMAILP = re.compile(".*?@.*?\..*?") # aa@bb.cc
@@ -62,7 +62,11 @@ def get_news(req, contents):
     hrefs = soup.find_all('a', {"class": "link_thumb"})
 
     for href in hrefs:
-        _req = requests.get(href.get('href'), headers=get_header())
+        try:
+            _req = requests.get(href.get('href'), headers=get_header())
+        except:
+            sleep_page(2)
+            _req = requests.get(href.get('href'), headers=get_header())
         cont = get_content_news_req(_req, href)
 
         if not cont or len(cont.split(' ')) < 35:
@@ -99,7 +103,11 @@ def get_content_news_req(req, href):
         if text.findChildren("strong") != []:
             continue
 
-        text = clean_text(text.contents[0])
+        try:
+            text = clean_text(text.contents[0])
+        except: # text = </br>
+            continue
+
         if 'copyright' in text.lower():
             continue
 
@@ -109,7 +117,6 @@ def get_content_news_req(req, href):
         elif EMAILP.search(text) is not None:
             continue
         else:
-            text = clean_text(text)
             if len(text.split(' ')) < 5:
                 continue
             content.append(text)
