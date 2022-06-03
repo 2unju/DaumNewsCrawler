@@ -20,6 +20,7 @@ DaumNewsCrawler/
 ## Setting
 ```shell
 pip install requirements.txt
+cd daum-news-crawler
 ```
 
 ## Usage
