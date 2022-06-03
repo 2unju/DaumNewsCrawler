@@ -3,8 +3,9 @@
 [다음 뉴스](https://news.daum.net/)에서 하루 전 일자부터 [max-num](https://github.com/2unju/DaumNewsCrawler/blob/master/daum-news-crawler/arguments.py)개의 뉴스기사를 크롤링합니다. 크롤링 결과는 하위 폴더에 아래와 같은 형태로 저장됩니다. 한 폴더당 1,500개의 기사가 저장됩니다.
 ```text
 DaumNewsCrawler/
-       ├ arguments.py
-       ├ ...
+       ├ daum-news-crawler/
+       │        ├ arguments.py
+       │        └ ...
        └ news/
           ├ (category name)/
           │       ├  0001/
