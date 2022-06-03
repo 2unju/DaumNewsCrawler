@@ -19,14 +19,13 @@ def run_singleprocess(args):
     if args.category == "all":
         for category in ["politics", "economic", "culture", "digital", "society"]:
             news(category)
-
     else:
         news(args.category)
 
 
 if __name__ == "__main__":
     args = get_args()
-    if args.multiprocessing:
+    if args.multiprocessing == "True":
         run_multiprocess(args)
     else:
         run_singleprocess(args)
